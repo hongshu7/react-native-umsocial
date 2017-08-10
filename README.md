@@ -23,7 +23,7 @@ iOS: v6.4.4
 ### 安装
 
 ```
-npm install react-native-umshare --save
+npm install react-native-umsocial --save
 react-native link
 ```
 
@@ -93,10 +93,10 @@ signingConfigs {
 ### IOS
 
 
-1. 在项目的的`Build Settings` 中搜索 `header` 找到 `Framework Search Paths` 添加 `$(SRCROOT)/../node_modules/react-native-umshare/ios/RCTUMShareModule/RCTUMShareModule/UMSocial/SocialFrameworks`
+1. 在项目的的`Build Settings` 中搜索 `header` 找到 `Framework Search Paths` 添加 `$(SRCROOT)/../node_modules/react-native-umsocial/ios/RCTUMSocialModule/RCTUMSocialModule/UMSocial/SocialFrameworks`
 
 
-2. 将 `Libraries` -> `RCTUMShareModule.xcodeproj` -> `RCTUMShareModule` -> `UMSocial` -> `SocialFrameworks` 和 `UMSocialUI` 文件夹拖到您的主工程下，不需要勾选 `Copy items if needed`
+2. 将 `Libraries` -> `RCTUMSocialModule.xcodeproj` -> `RCTUMSocialModule` -> `UMSocial` -> `SocialFrameworks` 和 `UMSocialUI` 文件夹拖到您的主工程下，不需要勾选 `Copy items if needed`
 
 3. 添加依赖库
 	- ibsqlite3.tbd
@@ -214,11 +214,11 @@ signingConfigs {
 先初始化参数
 
 ```js
-import UMShare from 'react-native-umshare';
+import UMSocial from 'react-native-umsocial';
 ...
 
 // 第二个参数决定在分享界面的排序1_、2_、3_为前缀
-UMShare.initShare("友盟appkey", 
+UMSocial.initShare("友盟appkey", 
 	{
         "1_weixin": {
             appKey: "",
@@ -242,9 +242,9 @@ UMShare.initShare("友盟appkey",
 调用分享
 
 ```js
-import UMShare from 'react-native-umshare';
+import UMSocial from 'react-native-umsocial';
 ...
-UMShare.share("标题", "简介", "缩略图地址", "链接地址")
+UMSocial.share("标题", "简介", "缩略图地址", "链接地址")
 .then(() => {
 	// 成功
 }, (error) => {
@@ -255,7 +255,7 @@ UMShare.share("标题", "简介", "缩略图地址", "链接地址")
 调用登录
 ```js
 //platform 为 weixin/weibo/qq 中的一个
-UMShare.login(platform)
+UMSocial.login(platform)
     .then((data) => {
         console.log(data);
     }, (error) => {
