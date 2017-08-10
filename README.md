@@ -1,12 +1,12 @@
 # 集成友盟分享与第三方登录
 
-支持平台：微信、QQ、新浪微博
+支持平台：微信、QQ、新浪微博  
 支持功能：登录、分享
 
 ### 作者
 
-邮箱：lhs167[at]gmail.com
-说明：此模块是根据[https://github.com/a289459798/react-native-umshare](react-native-umshare)项目更改而来，在此基础上更新了友盟的版本，并增加了微博登录功能，非常感谢原作者！
+邮箱：lhs167[at]gmail.com  
+说明：此模块是根据[react-native-umshare](https://github.com/a289459798/react-native-umshare)项目更改而来，在此基础上更新了友盟的版本，并增加了微博登录功能，非常感谢原作者！
 
 ### 友盟SDK版本
 
