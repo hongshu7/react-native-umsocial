@@ -1,0 +1,78 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "../../npm/UMSocial/react-native-umsocial/",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "../../npm/UMSocial/react-native-umsocial/",
+        "spec": "/Users/kevin/dev/npm/UMSocial/react-native-umsocial",
+        "type": "directory"
+      },
+      "/Users/kevin/dev/jidian/jidian-client"
+    ]
+  ],
+  "_from": "../../npm/UMSocial/react-native-umsocial",
+  "_id": "react-native-umsocial@1.0.0",
+  "_inCache": true,
+  "_location": "/react-native-umsocial",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "../../npm/UMSocial/react-native-umsocial/",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "../../npm/UMSocial/react-native-umsocial/",
+    "spec": "/Users/kevin/dev/npm/UMSocial/react-native-umsocial",
+    "type": "directory"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "file:../../npm/UMSocial/react-native-umsocial",
+  "_shasum": "1ce2a12504eae931571ae19b8f5db249e68348c8",
+  "_shrinkwrap": null,
+  "_spec": "../../npm/UMSocial/react-native-umsocial/",
+  "_where": "/Users/kevin/dev/jidian/jidian-client",
+  "author": {
+    "name": "Kevin Lai"
+  },
+  "bugs": {
+    "url": "https://github.com/lhs168/react-native-umsocial/issues"
+  },
+  "dependencies": {},
+  "description": "友盟分享和第三方登录",
+  "devDependencies": {},
+  "directories": {},
+  "gitHead": "96dbff624a4bde1e3bf3d1a8f15b568cb373f871",
+  "homepage": "https://github.com/lhs168/react-native-umsocial#readme",
+  "keywords": [
+    "react-native",
+    "share",
+    "weixin",
+    "qq",
+    "sina"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "lhs168",
+      "email": "lhs168@gmail.com"
+    }
+  ],
+  "name": "react-native-umsocial",
+  "optionalDependencies": {},
+  "readme": "# 集成友盟分享与第三方登录\n\n分享功能：微信、QQ、新浪微博\n登录功能：微信、QQ\n\n### 作者\n\nQQ: 289459798\nQQ群: 161263093\n欢迎更多的喜欢开源的小伙伴加入\n\n### 友盟SDK版本\n\nAndroid：v6.4.0(精简版)\nIOS: v6.3.0\n\n### 准备工作\n\n1. 到友盟平台申请账号 [http://www.umeng.com/](http://www.umeng.com/)\n2. 微信开发平台申请 [http://open.weixin.qq.com/](http://open.weixin.qq.com/)\n3. QQ开放平台申请 [http://open.qq.com/](http://open.qq.com/)\n4. 新浪开放平台申请[http://open.weibo.com/](http://open.weibo.com/)\n\n### 安装\n\n```\nnpm install react-native-umshare --save\nreact-native link\n```\n\n\n### Android\n\n\n添加Activity\n\n1. QQ\n\n```xml\n<activity\n    android:name=\"com.umeng.qq.tencent.AuthActivity\"\n    android:launchMode=\"singleTask\"\n    android:noHistory=\"true\" >\n\n    <intent-filter>\n        <action android:name=\"android.intent.action.VIEW\" />\n        <category android:name=\"android.intent.category.DEFAULT\" />\n        <category android:name=\"android.intent.category.BROWSABLE\" />\n        <data android:scheme=\"tencent+您的QQ appkey\" />\n    </intent-filter>\n</activity>\n\n<activity\n    android:name=\"com.umeng.qq.tencent.AssistActivity\"\n    android:screenOrientation=\"portrait\"\n    android:theme=\"@android:style/Theme.Translucent.NoTitleBar\"\n    android:configChanges=\"orientation|keyboardHidden|screenSize\"/>\n```\n\n2. 微信\n\n```xml\n<activity\n    android:name=\".wxapi.WXEntryActivity\"\n    android:configChanges=\"keyboardHidden|orientation|screenSize\"\n    android:exported=\"true\"\n    android:screenOrientation=\"portrait\"\n    android:theme=\"@android:style/Theme.Translucent.NoTitleBar\" />\n```\n需要手动在包名下添加`wxapi.WXEntryActivity`文件，继承`WXCallbackActivity`\n\n3. 新浪\n\n```xml\n<activity\n\tandroid:name=\"com.umeng.socialize.editorpage.ShareActivity\"\n            android:theme=\"@style/Theme.UMDefault\"\n            android:excludeFromRecents=\"true\"/>\n```\n\nandroid 需要编译出来的apk文件的签名和申请微信和QQ时填写的一致，开发过程中可以在build.gradle 文件加入以下代码\n\n```\nsigningConfigs {\n        debug {\n            storeFile file('keystore 文件路径')\n            storePassword \"keydtore 密码\"\n            keyAlias \"keydtore 别名\"\n            keyPassword \"keydtore 别名密码\"\n        }\n    }\n```\n\n### IOS\n\n\n1. 在项目的的`Build Settings` 中搜索 `header` 找到 `Framework Search Paths` 添加 `$(SRCROOT)/../node_modules/react-native-umshare/ios/RCTUMShareModule/RCTUMShareModule/UMSocial/SocialFrameworks`\n\n\n2. 将 `Libraries` -> `RCTUMShareModule.xcodeproj` -> `RCTUMShareModule` -> `UMSocial` -> `SocialFrameworks` 和 `UMSocialUI` 文件夹拖到您的主工程下，不需要勾选 `Copy items if needed`\n\n3. 添加依赖库\n\t- ibsqlite3.tbd\n\t- CoreGraphics.framework\n\t- SystemConfiguration.framework\n\t- libc++.tbd\n\t- libz.tbd\n\t- ImageIO.framework\n\n4. 配置SSO白名单\n\n```\n<key>LSApplicationQueriesSchemes</key>\n<array>\n    <!-- 微信 URL Scheme 白名单-->\n    <string>wechat</string>\n    <string>weixin</string>\n\n    <!-- 新浪微博 URL Scheme 白名单-->\n    <string>sinaweibohd</string>\n    <string>sinaweibo</string>\n    <string>sinaweibosso</string>\n    <string>weibosdk</string>\n    <string>weibosdk2.5</string>\n\n    <!-- QQ、Qzone URL Scheme 白名单-->\n    <string>mqqapi</string>\n    <string>mqq</string>\n    <string>mqqOpensdkSSoLogin</string>\n    <string>mqqconnect</string>\n    <string>mqqopensdkdataline</string>\n    <string>mqqopensdkgrouptribeshare</string>\n    <string>mqqopensdkfriend</string>\n    <string>mqqopensdkapi</string>\n    <string>mqqopensdkapiV2</string>\n    <string>mqqopensdkapiV3</string>\n    <string>mqqopensdkapiV4</string>\n    <string>mqzoneopensdk</string>\n    <string>wtloginmqq</string>\n    <string>wtloginmqq2</string>\n    <string>mqqwpa</string>\n    <string>mqzone</string>\n    <string>mqzonev2</string>\n    <string>mqzoneshare</string>\n    <string>wtloginqzone</string>\n    <string>mqzonewx</string>\n    <string>mqzoneopensdkapiV2</string>\n    <string>mqzoneopensdkapi19</string>\n    <string>mqzoneopensdkapi</string>\n    <string>mqqbrowser</string>\n    <string>mttbrowser</string>\n\n</array>\n```\n\n5. URL Scheme\n\t- 微信  \n\t\t微信appKey -> wxdc1e388c3822c80b\n\t- QQ\n\t\t需要添加两项URL Scheme：\n        1、\"tencent\"+腾讯QQ互联应用appID  \n        2、“QQ”+腾讯QQ互联应用appID转换成十六进制（不足8位前面补0）\n        如appID：100424468 \n        1、tencent100424468  \n        2、QQ05fc5b14| QQ05fc5b14为100424468转十六进制而来，因不足8位向前补0，然后加\"QQ\"前缀\n    - 新浪微博\n    \t“wb”+新浪appKey -> wb3921700954\n\n6. 修改 `AppDelegate.m`\n\n    ```oc\n    #import <UMSocialCore/UMSocialCore.h>\n    \n    ...\n    \n    //#define __IPHONE_10_0    100000\n    #if __IPHONE_OS_VERSION_MAX_ALLOWED > 100000\n    - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options\n    {\n      //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响。\n      BOOL result = [[UMSocialManager defaultManager]  handleOpenURL:url options:options];\n      if (!result) {\n        // 其他如支付等SDK的回调\n        // result = other;\n      }\n      return result;\n    }\n    \n    #endif\n    \n    - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation\n    {\n      //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响\n      BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];\n      if (!result) {\n        // 其他如支付等SDK的回调\n        // result = other;\n      }\n      return result;\n    }\n    \n    - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url\n    {\n      BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];\n      if (!result) {\n        // 其他如支付等SDK的回调\n        // result = other;\n      }\n      return result;\n    }\n    ```\n\n### 使用方式\n\n先初始化参数\n\n```js\nimport UMShare from 'react-native-umshare';\n...\n\n// 第二个参数决定在分享界面的排序1_、2_、3_为前缀\nUMShare.initShare(\"友盟appkey\", \n\t{\n        \"1_weixin\": {\n            appKey: \"\",\n            appSecret: \"\",\n            redirectURL: \"\",\n        },\n        \"2_qq\": {\n            appKey: \"\",\n            appSecret: \"\",\n            redirectURL: \"\",\n        },\n        \"3_sina\": {\n            appKey: \"\",\n            appSecret: \"\",\n            redirectURL: \"\",\n        },\n    },\n    false);\n```\n\n调用分享\n\n```js\nimport UMShare from 'react-native-umshare';\n...\nUMShare.share(\"标题\", \"简介\", \"缩略图地址\", \"链接地址\")\n.then(() => {\n\t// 成功\n}, (error) => {\n\t// 失败\n})\n```\n\n调用登录\n```js\nUMShare.loginQQ()\n    .then((data) => {\n        console.log(data);\n    }, (error) => {\n        console.log(error)\n    })\n\nUMShare.loginWX()\n    .then((data) => {\n        console.log(data);\n    }, (error) => {\n        console.log(error)\n    })\n```\n\n### API\n\n```js\n\n/**\n * 初始化分享参数\n * @param appkey\n * @param sharePlatforms\n * @param debug\n */\ninitShare(appkey: string, sharePlatforms: Object, debug: boolean);\n\n/**\n * 友盟默认UI分享\n * @param title\n * @param desc\n * @param thumb\n * @param link\n */\nshare(title, desc, thumb, link);\n\n/**\n * 自定义UI, 微信分享\n * @param title\n * @param desc\n * @param thumb\n * @param link\n */\nshareWX(title, desc, thumb, link);\n\n/**\n * 自定义UI, 微信朋友圈分享\n * @param title\n * @param desc\n * @param thumb\n * @param link\n */\nshareWXTimeLine(title, desc, thumb, link);\n\n/**\n * 自定义UI, QQ分享\n * @param title\n * @param desc\n * @param thumb\n * @param link\n */\nshareQQ(title, desc, thumb, link);\n\n/**\n * 自定义UI, QQ空间分享\n * @param title\n * @param desc\n * @param thumb\n * @param link\n */\nshareQzone(title, desc, thumb, link);\n\n/**\n * 自定义UI, 新浪分享\n * @param title\n * @param desc\n * @param thumb\n * @param link\n */\nshareSina(title, desc, thumb, link);\n\n/**\n * 微信登录\n * @returns {Promise}\n */\nloginWX();\n\n/**\n * QQ登录\n * @returns {Promise}\n */\nloginQQ();\n```",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhs168/react-native-umsocial.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}
