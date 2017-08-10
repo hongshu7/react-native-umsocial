@@ -1,25 +1,24 @@
 # 集成友盟分享与第三方登录
 
-分享功能：微信、QQ、新浪微博
-登录功能：微信、QQ
+支持平台：微信、QQ、新浪微博
+支持功能：登录、分享
 
 ### 作者
 
-QQ: 289459798
-QQ群: 161263093
-欢迎更多的喜欢开源的小伙伴加入
+邮箱：lhs167[at]gmail.com
+说明：此模块是根据[https://github.com/a289459798/react-native-umshare](react-native-umshare)项目更改而来，在此基础上更新了友盟的版本，并增加了微博登录功能，非常感谢原作者！
 
 ### 友盟SDK版本
 
-Android：v6.4.0(精简版)
-IOS: v6.3.0
+Android：v6.4.4(精简版)
+iOS: v6.4.4
 
-### 准备工作
+### 账号申请
 
 1. 到友盟平台申请账号 [http://www.umeng.com/](http://www.umeng.com/)
 2. 微信开发平台申请 [http://open.weixin.qq.com/](http://open.weixin.qq.com/)
 3. QQ开放平台申请 [http://open.qq.com/](http://open.qq.com/)
-4. 新浪开放平台申请[http://open.weibo.com/](http://open.weibo.com/)
+4. 微博开放平台申请[http://open.weibo.com/](http://open.weibo.com/)
 
 ### 安装
 
@@ -69,7 +68,7 @@ react-native link
 ```
 需要手动在包名下添加`wxapi.WXEntryActivity`文件，继承`WXCallbackActivity`
 
-3. 新浪
+3. 微博
 
 ```xml
 <activity
@@ -164,7 +163,7 @@ signingConfigs {
         1、tencent100424468  
         2、QQ05fc5b14| QQ05fc5b14为100424468转十六进制而来，因不足8位向前补0，然后加"QQ"前缀
     - 新浪微博
-    	“wb”+新浪appKey -> wb3921700954
+    	“wb”+微博appKey -> wb3921700954
 
 6. 修改 `AppDelegate.m`
 
@@ -255,14 +254,8 @@ UMShare.share("标题", "简介", "缩略图地址", "链接地址")
 
 调用登录
 ```js
-UMShare.loginQQ()
-    .then((data) => {
-        console.log(data);
-    }, (error) => {
-        console.log(error)
-    })
-
-UMShare.loginWX()
+//platform 为 weixin/weibo/qq 中的一个
+UMShare.login(platform)
     .then((data) => {
         console.log(data);
     }, (error) => {
@@ -298,7 +291,7 @@ share(title, desc, thumb, link);
  * @param thumb
  * @param link
  */
-shareWX(title, desc, thumb, link);
+shareWeixin(title, desc, thumb, link);
 
 /**
  * 自定义UI, 微信朋友圈分享
@@ -307,7 +300,7 @@ shareWX(title, desc, thumb, link);
  * @param thumb
  * @param link
  */
-shareWXTimeLine(title, desc, thumb, link);
+shareWeixinTimeLine(title, desc, thumb, link);
 
 /**
  * 自定义UI, QQ分享
@@ -328,23 +321,32 @@ shareQQ(title, desc, thumb, link);
 shareQzone(title, desc, thumb, link);
 
 /**
- * 自定义UI, 新浪分享
+ * 自定义UI, 微博分享
  * @param title
  * @param desc
  * @param thumb
  * @param link
  */
-shareSina(title, desc, thumb, link);
+shareWeibo(title, desc, thumb, link);
 
 /**
- * 微信登录
+ * 登录验证，只返回openId和token，不返回用户资料
+ * @param platform 平台：weixin/weibo/qq
  * @returns {Promise}
  */
-loginWX();
+auth(platform);
 
 /**
- * QQ登录
+ * 登录并获取用户资料
+ * @param platform 平台：weixin/weibo/qq
  * @returns {Promise}
  */
-loginQQ();
+login(platform);
+
+/**
+ * 判断app是否安装
+ * @param platform 平台：weixin/weibo/qq
+ * @returns {Promise}
+ */
+checkInstall(platform);
 ```

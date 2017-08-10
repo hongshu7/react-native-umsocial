@@ -61,7 +61,7 @@ class UMSocial extends NativeEventEmitter {
      * @param thumb
      * @param link
      */
-    shareWX(title, desc, thumb, link) {
+    shareWeixin(title, desc, thumb, link) {
 
         return new Promise(function (callback, errorCallback) {
             UMSocialModule.shareWithPlatformType(1, title, desc, thumb, link)
@@ -81,7 +81,7 @@ class UMSocial extends NativeEventEmitter {
      * @param thumb
      * @param link
      */
-    shareWXTimeLine(title, desc, thumb, link) {
+    shareWeixinTimeLine(title, desc, thumb, link) {
 
         return new Promise(function (callback, errorCallback) {
             UMSocialModule.shareWithPlatformType(2, title, desc, thumb, link)
@@ -135,13 +135,13 @@ class UMSocial extends NativeEventEmitter {
     }
 
     /**
-     * 新浪分享
+     * 微博分享
      * @param title
      * @param desc
      * @param thumb
      * @param link
      */
-    shareSina(title, desc, thumb, link) {
+    shareWeibo(title, desc, thumb, link) {
 
         return new Promise(function (callback, errorCallback) {
             UMSocialModule.shareWithPlatformType(0, title, desc, thumb, link)
