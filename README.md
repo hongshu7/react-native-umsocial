@@ -5,12 +5,12 @@
 
 ### 作者
 
-邮箱：lhs167[at]gmail.com  
+邮箱：lhs168[at]gmail.com  
 说明：此模块是根据[react-native-umshare](https://github.com/a289459798/react-native-umshare)项目更改而来，在此基础上更新了友盟的版本，并增加了微博登录功能，非常感谢原作者！
 
 ### 友盟SDK版本
 
-Android：v6.4.4(精简版)
+Android：v6.4.4(精简版)  
 iOS: v6.4.4
 
 ### 账号申请
