@@ -93,18 +93,22 @@ signingConfigs {
 ### IOS
 
 
-1. 在项目的的`Build Settings` 中搜索 `header` 找到 `Framework Search Paths` 添加 `$(SRCROOT)/../node_modules/react-native-umsocial/ios/RCTUMSocialModule/RCTUMSocialModule/UMSocial/SocialFrameworks`
+1. 在项目的的`Build Settings` 中搜索 `header` 找到 `Framework Search Paths` 
+添加 `$(SRCROOT)/../node_modules/react-native-umsocial/ios/RCTUMSocial/UMSocialSDK` 及 
+`$(SRCROOT)/../node_modules/react-native-umsocial/ios/RCTUMSocial/UMSocialUI`
 
 
-2. 将 `Libraries` -> `RCTUMSocialModule.xcodeproj` -> `RCTUMSocialModule` -> `UMSocial` -> `SocialFrameworks` 和 `UMSocialUI` 文件夹拖到您的主工程下，不需要勾选 `Copy items if needed`
+2. 将 `Libraries` -> `RCTUMSocial.xcodeproj` -> `RCTUMSocial` -> `UMSocialSDK` 和 `UMSocialUI` 文件夹拖到您的主工程下，不需要勾选 `Copy items if needed`
 
 3. 添加依赖库
-	- ibsqlite3.tbd
+	
 	- CoreGraphics.framework
 	- SystemConfiguration.framework
+    - ImageIO.framework
 	- libc++.tbd
 	- libz.tbd
-	- ImageIO.framework
+    - libsqlite3.tbd
+	
 
 4. 配置SSO白名单
 
@@ -154,7 +158,7 @@ signingConfigs {
 
 5. URL Scheme
 	- 微信  
-		微信appKey -> wxdc1e388c3822c80b
+		直接填写微信AppKey，如：wx066e05f6c8b43e85
 	- QQ
 		需要添加两项URL Scheme：
         1、"tencent"+腾讯QQ互联应用appID  
@@ -163,7 +167,7 @@ signingConfigs {
         1、tencent100424468  
         2、QQ05fc5b14| QQ05fc5b14为100424468转十六进制而来，因不足8位向前补0，然后加"QQ"前缀
     - 新浪微博
-    	“wb”+微博appKey -> wb3921700954
+    	“wb”+微博appKey，如：wb3921700954
 
 6. 修改 `AppDelegate.m`
 
